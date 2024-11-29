@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>計算ツール</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      max-width: 500px; /* 中央に寄せる */
+      margin: 0 auto;
+    }
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    label {
+      flex: 1 0 100px;
+      margin-bottom: 5px;
+    }
+    input {
+      flex: 1;
+      min-width: 120px;
+    }
+    button {
+      width: 100%; /* ボタンを画面幅に合わせる */
+      padding: 10px;
+      font-size: 16px;
+    }
+    #result {
+      font-size: 1.2em;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 2px solid #000;
+      visibility: hidden;
+      text-align: center;
+    }
+    /* 小さい画面向けの調整 */
+    @media (max-width: 480px) {
+      label {
+        flex: 1 0 80px;
+      }
+      input {
+        flex: 1 0 100px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>計算ツール</h1>
+  <div class="input-group">
+    <label for="sogo">sogo:</label>
+    <input type="number" id="sogo" step="any">
+  </div>
+  <div class="input-group">
+    <label for="rp">rp:</label>
+    <input type="number" id="rp" step="any">
+  </div>
+  <div class="input-group">
+    <label for="syozi">syozi:</label>
+    <input type="number" id="syozi" step="any">
+  </div>
+  <div class="input-group">
+    <label for="pro">pro:</label>
+    <input type="number" id="pro" step="any">
+  </div>
+  <div class="input-group">
+    <label for="au">au:</label>
+    <input type="number" id="au" step="any">
+  </div>
+  <div class="input-group">
+    <label for="ag">ag:</label>
+    <input type="number" id="ag" step="any">
+  </div>
+  <div class="input-group">
+    <label for="cu">cu:</label>
+    <input type="number" id="cu" step="any">
+  </div>
+  <button onclick="calculate()">計算する</button>
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const sogo = parseFloat(document.getElementById('sogo').value) || 0;
+      const rp = parseFloat(document.getElementById('rp').value) || 0;
+      const syozi = parseFloat(document.getElementById('syozi').value) || 0;
+      const pro = parseFloat(document.getElementById('pro').value) || 0;
+      const au = parseFloat(document.getElementById('au').value) || 0;
+      const ag = parseFloat(document.getElementById('ag').value) || 0;
+      const cu = parseFloat(document.getElementById('cu').value) || 0;
+
+      const result = (sogo * 20) + (rp * 0.1) + (syozi * 200) + (pro * 200) + (au * 150) + (ag * 100) + (cu * 50);
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `計算結果: ${result.toFixed(2)}`;
+      resultDiv.style.visibility = 'visible';
+    }
+  </script>
+</body>
+</html>
